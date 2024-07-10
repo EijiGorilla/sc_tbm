@@ -39,6 +39,7 @@ import Chart from './components/Chart';
 import ProgressChart from './components/ProgressChart';
 import { dateUpdate } from './Query';
 import { tbmTunnelSection } from './StatusUniqueValues';
+import { tbmTunnelLayer } from './layers';
 
 function App() {
   const [asOfDate, setAsOfDate] = useState<undefined | any | unknown>(null);
@@ -61,6 +62,14 @@ function App() {
   // Segmented control items
   const [sectionSelected, setSectionSelected] = useState<any>(tbmTunnelSection[0]);
   const sections = tbmTunnelSection;
+
+  //
+  const [tbmTunnelLayerLoaded, setTbmTunnelLayerLoaded] = useState<any>();
+  useEffect(() => {
+    tbmTunnelLayer.load().then(() => {
+      setTbmTunnelLayerLoaded(tbmTunnelLayer.loadStatus);
+    });
+  });
 
   useEffect(() => {
     if (activeWidget) {
@@ -123,7 +132,7 @@ function App() {
     <>
       <CalciteShell>
         <CalciteTabs slot="panel-end">
-          <Chart section={sectionSelected} />
+          {tbmTunnelLayerLoaded === 'loaded' && <Chart section={sectionSelected} />}
         </CalciteTabs>
 
         <header
