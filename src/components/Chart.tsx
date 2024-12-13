@@ -234,8 +234,8 @@ const Chart = (props: any) => {
         <img
           src="https://EijiGorilla.github.io/Symbols/TBM.png"
           alt="TBM Logo"
-          height={'60px'}
-          width={'70px'}
+          height={'50px'}
+          width={'60px'}
           style={{ marginLeft: 'auto', marginRight: '10%' }}
         />
       </CalciteLabel>

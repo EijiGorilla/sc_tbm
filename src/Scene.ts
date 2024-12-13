@@ -132,7 +132,7 @@ export const measurement = new Measurement({
 const searchExpand = new Expand({
   view: view,
   content: searchWidget,
-  expandIconClass: 'esri-icon-search',
+  expandIcon: 'chevrons-right',
   group: 'top-right',
 });
 view.ui.add(searchExpand, {
